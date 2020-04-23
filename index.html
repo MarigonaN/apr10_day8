@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap" />
+    <style>
+      body {
+        background-color: #292929;
+        color: white;
+        font-family: 'Nunito', sans-serif;
+        max-width: 768px;
+        margin: 0 auto;
+      }
+
+      #calendar {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 1px solid white;
+      }
+
+      .day {
+        display: inline-block;
+        width: 150px;
+        text-align: center;
+        min-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calendar</h1>
+    <div id="calendar">
+      <!-- stuff will be inserted here -->
+    </div>
+    <script>
+      window.onload = function () {
+        var numberOfDays = daysInThisMonth() // 30
+        console.log('this is the value of numberOfDays', numberOfDays)
+        var calendar = document.querySelector('#calendar')
+
+        for (let i = 0; i < numberOfDays; i++) {
+          let child = document.createElement('div')
+          child.className = 'day'
+
+          let day = document.createElement('h3')
+          let dayOfTheMonth = i + 1
+          day.innerText = dayOfTheMonth
+
+          child.appendChild(day)
+          calendar.appendChild(child)
+        }
+      }
+
+      function daysInThisMonth() {
+        let now = new Date()
+        return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+      }
+    </script>
+  </body>
+</html>
